@@ -215,8 +215,13 @@ public class ContactBook
   }
 
   private void GotoPage()
+  {    
+    GotoPage(allContacts, ref page, size);
+  }
+
+  private void GotoPage(List<Contact> contacts, ref int page, int size)
   {
-    Console.WriteLine("Goto Page");
+    page = GetInt("Enter Page", 1, PageCount(contacts, size));
   }
 
   private void SetPageSize()
@@ -262,6 +267,25 @@ public class ContactBook
   private void Exit()
   {
     isExit = true;
+  }
+
+  private int GetInt(string prompt, int min, int max)
+  {
+   string options = $"{min}-{max}";
+
+    Console.WriteLine(prompt + $" [{options}]");
+    string answer = Console.ReadLine()!;
+    int value;
+
+    while(!int.TryParse(answer, out value) || value < min || value > max)
+    {
+      Console.WriteLine("ERROR:Invalid option. Please try again.");
+      Console.WriteLine(prompt + $" [{options}]");
+      answer = Console.ReadLine()!;
+
+      
+    }
+    return value;
   }
 
   private string GetOption(string prompt, string[] validOptions, string defaultOption)
