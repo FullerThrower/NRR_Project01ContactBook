@@ -137,8 +137,8 @@ public class ContactBook
     string inputOptions = ""
     + $"[{NEXT_PAGE}] Next Page | [{CREATE_CONTACT}] Create Contact | [{DELETE_CONTACT}] Delete Contact | [{DEDUPLICATE_CONTACTS}] Deduplicate Contacts\n"
     + $"[{PREV_PAGE}] Prev Page | [{REVIEW_CONTACT}] Review Contact | [{FIND_CONTACT  }] Find Contacts  | [{PAGE_SIZE           }] Set Page Size\n"
-    + $"[{GOTO_PAGE}] Goto Page | [{UPDATE_CONTACT}] Update Contact | [{ORDER_CONTACTS}] Order Contacts | [{EXIT                }] Exit\n"
-    + $"\n> ";
+    + $"[{GOTO_PAGE}] Goto Page | [{UPDATE_CONTACT}] Update Contact | [{ORDER_CONTACTS}] Order Contacts | [{EXIT                }] Exit\n";
+    //+ $"\n> ";
 
     Console.WriteLine();
     Console.WriteLine(inputOptions);
@@ -226,7 +226,14 @@ public class ContactBook
 
   private void SetPageSize()
   {
-    Console.WriteLine("Set Page Size");
+    PageSize(ref page, ref size);
+  }
+
+  private void PageSize(ref int page, ref int size)
+  {
+    int max = Console.WindowHeight - 10;
+    size = GetInt("Enter Page Size", 1, max);
+    page = 1;
   }
 
   private void CreateContact()
