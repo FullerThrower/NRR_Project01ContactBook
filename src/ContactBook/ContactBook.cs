@@ -238,7 +238,33 @@ public class ContactBook
 
   private void CreateContact()
   {
+    Console.Clear();
+    Console.WriteLine(new string('#', 80));
     Console.WriteLine("Create Contact");
+    Console.WriteLine(new string('#', 80));
+    Console.WriteLine();
+
+    Console.Write("Enter First Name: ");
+    string fname = Console.ReadLine()!;
+    Console.Write("Enter Last Name: ");
+    string lname = Console.ReadLine()!;
+    Console.Write("Enter Phone: ");
+    string phone = Console.ReadLine()!;
+    Console.Write("Enter Email: ");
+    string email = Console.ReadLine()!;
+
+    if (Confirm("Do you want to create this contact?", YES))
+    {
+      Contact c = new Contact(fname, lname, phone, email);
+      allContacts.Add(c);
+      page = PageCount(allContacts, size);
+
+      Console.WriteLine("Operation successful: Contact created.");
+    }
+    else
+    {
+      Console.WriteLine("Operation cancelled: Contact not created.");
+    }
   }
 
   private void ReviewContact()
