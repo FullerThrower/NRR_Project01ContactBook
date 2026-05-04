@@ -119,7 +119,7 @@ public class ContactBook
     string inputOptions = ""
     + $"[{NEXT_PAGE}] Next Page | [{CREATE_CONTACT}] Create Contact | [{DELETE_CONTACT}] Delete Contact | [{DEDUPLICATE_CONTACTS}] Deduplicate Contacts\n"
     + $"[{PREV_PAGE}] Prev Page | [{REVIEW_CONTACT}] Review Contact | [{FIND_CONTACT  }] Find Contacts  | [{PAGE_SIZE           }] Set Page Size\n"
-    + $"[{GOTO_PAGE}] Goto Page | [{UPDATE_CONTACT}] Update Contact | [{ORDER_CONTACTS}] Order Contacts | [{EXIT                }] Exitn\n"
+    + $"[{GOTO_PAGE}] Goto Page | [{UPDATE_CONTACT}] Update Contact | [{ORDER_CONTACTS}] Order Contacts | [{EXIT                }] Exit\n"
     + $"\n>";
 
     Console.WriteLine();
@@ -128,7 +128,7 @@ public class ContactBook
 
   private string GetInput()
   {
-    return "";
+    return Console.ReadLine()!.ToUpper();
   }
 
   private bool IsValidInput(string input)
