@@ -462,14 +462,6 @@ public class ContactBook
         int phoneIndex = GetInt("Enter phone index: ", 1, group.Count) - 1;
         int emailIndex = GetInt("Enter email index: ", 1, group.Count) - 1;
 
-        Console.WriteLine();
-        Console.WriteLine(new string('#', 80));
-        Console.WriteLine("Duplicate Contacts");
-        Console.WriteLine(new string('#', 80));
-        Console.WriteLine();
-
-        ShowContacts(group, 1, group.Count);
-
         Contact merged = new Contact();
         merged.SetFName(group[fnameIndex].GetFName());
         merged.SetLName(group[lnameIndex].GetLName());
@@ -510,7 +502,7 @@ public class ContactBook
 
     if (Confirm("Do you want to apply all merged to contacts list?", NO))
     {
-      allContacts = temp;
+      allContacts = filteredContacts = temp;
       Console.WriteLine("Operation successful: Contact deduplicated.");
     }
     else
